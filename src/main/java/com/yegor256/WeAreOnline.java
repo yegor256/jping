@@ -38,7 +38,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  *
  * <code><pre> import com.yegor256.WeAreOnline;
  * import org.junit.jupiter.api.extension.ExtendWith;
- * 
+ *
  * &#64;ExtendWith(WeAreOnline.class)
  * final class MyTest {
  *   // Your test methods
@@ -63,7 +63,10 @@ public final class WeAreOnline implements ExecutionCondition {
             }
         } catch (final IOException ex) {
             ret = ConditionEvaluationResult.disabled(
-                String.format("Failed to check online status: %s", ex.getMessage())
+                String.format(
+                    "Failed to check online status: %s",
+                    ex.getMessage()
+                )
             );
         }
         return ret;
