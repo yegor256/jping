@@ -26,12 +26,14 @@ package com.yegor256;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * Test case for {@link WeAreOnline}.
  *
  * @since 0.1.0
  */
+@ExtendWith(WeAreOnline.class)
 final class WeAreOnlineTest {
 
     @Test
