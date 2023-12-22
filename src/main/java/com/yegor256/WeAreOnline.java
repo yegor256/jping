@@ -37,6 +37,8 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  * <p>Use in together with {@link ExecutionCondition}:</p>
  *
  * <code><pre> import com.yegor256.WeAreOnline;
+ * import org.junit.jupiter.api.extension.ExtendWith;
+ * 
  * &#64;ExtendWith(WeAreOnline.class)
  * final class MyTest {
  *   // Your test methods
