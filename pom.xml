@@ -31,7 +31,7 @@ SOFTWARE.
   </parent>
   <groupId>com.yegor256</groupId>
   <artifactId>jping</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
   <name>jping</name>
   <description>JUnit execution condition to check that we are online</description>
