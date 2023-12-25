@@ -19,6 +19,7 @@ First, you add this to your `pom.xml`:
   <groupId>com.yegor256</groupId>
   <artifactId>jping</artifactId>
   <version>0.0.1</version>
+  <scope>test</scope>
 </dependency>
 ```
 
