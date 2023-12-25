@@ -26,13 +26,21 @@ Then, you use it like this:
 
 ```java
 import com.yegor256.WeAreOnline;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(WeAreOnline.class)
 final class MyTest {
-  // Your test methods
+  @Test
+  void canDownloadViaHttp() throws Exception {
+    new URL("https://www.google.com").openStream();
+  }
 }
 ```
 
+We don't want this unit test to be executed when no Internet connection
+is available. The `WeAreOnline` execution condition will prevent JUnit5 from
+executing the test when you are offline.
 
 ## How to Contribute
 
