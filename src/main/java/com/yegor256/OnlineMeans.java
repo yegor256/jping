@@ -30,13 +30,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Override default ping settings.
+ * Override ping options.
  * @author ishchenko
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
-public @interface WeAreOnlineOverride {
+public @interface OnlineMeans {
     /**
      * URL to ping.
      * @return Public URL

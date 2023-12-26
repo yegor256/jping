@@ -57,7 +57,7 @@ public final class WeAreOnline implements ExecutionCondition {
     @Override
     public ConditionEvaluationResult evaluateExecutionCondition(
         final ExtensionContext context) {
-        final WeAreOnlineOverride overrides = WeAreOnline.retrieveSettings(context);
+        final OnlineMeans overrides = WeAreOnline.retrieveSettings(context);
         ConditionEvaluationResult ret;
         try {
             if (WeAreOnline.ping(overrides)) {
@@ -88,28 +88,28 @@ public final class WeAreOnline implements ExecutionCondition {
      * @param context Test context
      * @return Settings for ping
      */
-    private static WeAreOnlineOverride retrieveSettings(final ExtensionContext context) {
+    private static OnlineMeans retrieveSettings(final ExtensionContext context) {
         return Optional.ofNullable(context)
             .flatMap(ExtensionContext::getElement)
             .flatMap(
-                element -> AnnotationUtils.findAnnotation(element, WeAreOnlineOverride.class)
+                element -> AnnotationUtils.findAnnotation(element, OnlineMeans.class)
             )
-            .orElse(new DefaultSettings());
+            .orElse(new DefaultOnlineMeans());
     }
 
     /**
      * Ping.
-     * @param overrides Override default ping settings.
+     * @param options Override default ping options.
      * @return TRUE if we are online
      * @throws IOException In case of check failure
      * @since 0.2.0
      */
-    private static boolean ping(final WeAreOnlineOverride overrides) throws IOException {
+    private static boolean ping(final OnlineMeans options) throws IOException {
         boolean online = true;
         try {
-            final URLConnection conn = new URI(overrides.url()).toURL().openConnection();
-            conn.setConnectTimeout(overrides.connectTimeout());
-            conn.setReadTimeout(overrides.readTimeout());
+            final URLConnection conn = new URI(options.url()).toURL().openConnection();
+            conn.setConnectTimeout(options.connectTimeout());
+            conn.setReadTimeout(options.readTimeout());
             conn.connect();
             conn.getInputStream().close();
         } catch (final IOException ignored) {
@@ -121,10 +121,10 @@ public final class WeAreOnline implements ExecutionCondition {
     }
 
     /**
-     * Default settings if WeAreOnlineOverride is not present.
+     * Default options if OnlineMeans is not present.
      * @since 0.2.0
      */
-    private static class DefaultSettings implements Annotation, WeAreOnlineOverride {
+    private static class DefaultOnlineMeans implements Annotation, OnlineMeans {
 
         @Override
         public String url() {
@@ -143,7 +143,7 @@ public final class WeAreOnline implements ExecutionCondition {
 
         @Override
         public Class<? extends Annotation> annotationType() {
-            return WeAreOnlineOverride.class;
+            return OnlineMeans.class;
         }
 
         @Override

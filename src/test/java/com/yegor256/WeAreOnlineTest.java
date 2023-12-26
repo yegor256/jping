@@ -72,13 +72,13 @@ final class WeAreOnlineTest {
     }
 
     @SuppressWarnings("unused")
-    @WeAreOnlineOverride(connectTimeout = 1, readTimeout = 1)
+    @OnlineMeans(connectTimeout = 1, readTimeout = 1)
     private void overrideTimeout() {
         // empty method for test override annotation
     }
 
     @SuppressWarnings("unused")
-    @WeAreOnlineOverride(offline = true)
+    @OnlineMeans(offline = true)
     private void overrideOfflineMode() {
         // empty method for test override annotation
     }
