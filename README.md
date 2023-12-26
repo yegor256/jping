@@ -39,6 +39,23 @@ final class MyTest {
 }
 ```
 
+Or if need to override default settings:
+```java
+import com.yegor256.WeAreOnline;
+import com.yegor256.WeAreOnlineOverride;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@ExtendWith(WeAreOnline.class)
+final class MyTest {
+  @Test
+  @WeAreOnlineOverride(url = "https://www.amazon.com", connectTimeout = 500, readTimeout = 1500)
+  void canDownloadViaHttp() throws Exception {
+    new URL("https://www.amazon.com").openStream();
+  }
+}
+```
+
 We don't want this unit test to be executed when no Internet connection
 is available. The `WeAreOnline` execution condition will prevent JUnit5 from
 executing the test when you are offline.

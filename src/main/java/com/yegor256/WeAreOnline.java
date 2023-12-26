@@ -24,12 +24,15 @@
 package com.yegor256;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLConnection;
+import java.util.Optional;
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.platform.commons.util.AnnotationUtils;
 
 /**
  * JUnit5 Execution Condition to check that a public Internet connection is online.
@@ -54,9 +57,10 @@ public final class WeAreOnline implements ExecutionCondition {
     @Override
     public ConditionEvaluationResult evaluateExecutionCondition(
         final ExtensionContext context) {
+        final WeAreOnlineOverride overrides = WeAreOnline.retrieveSettings(context);
         ConditionEvaluationResult ret;
         try {
-            if (WeAreOnline.ping()) {
+            if (WeAreOnline.ping(overrides)) {
                 ret = ConditionEvaluationResult.enabled("We are online!");
             } else {
                 ret = ConditionEvaluationResult.disabled("We are offline");
@@ -69,18 +73,43 @@ public final class WeAreOnline implements ExecutionCondition {
                 )
             );
         }
+        if (overrides.offline()) {
+            if (ret.isDisabled()) {
+                ret = ConditionEvaluationResult.enabled(ret.getReason().orElse(null));
+            } else {
+                ret = ConditionEvaluationResult.disabled(ret.getReason().orElse(null));
+            }
+        }
         return ret;
     }
 
     /**
+     * Find settings for ping method. If settings not found, then return default.
+     * @param context Test context
+     * @return Settings for ping
+     */
+    private static WeAreOnlineOverride retrieveSettings(final ExtensionContext context) {
+        return Optional.ofNullable(context)
+            .flatMap(ExtensionContext::getElement)
+            .flatMap(
+                element -> AnnotationUtils.findAnnotation(element, WeAreOnlineOverride.class)
+            )
+            .orElse(new DefaultSettings());
+    }
+
+    /**
      * Ping.
+     * @param overrides Override default ping settings.
      * @return TRUE if we are online
      * @throws IOException In case of check failure
+     * @since 0.2.0
      */
-    private static boolean ping() throws IOException {
+    private static boolean ping(final WeAreOnlineOverride overrides) throws IOException {
         boolean online = true;
         try {
-            final URLConnection conn = new URI("https://www.google.com").toURL().openConnection();
+            final URLConnection conn = new URI(overrides.url()).toURL().openConnection();
+            conn.setConnectTimeout(overrides.connectTimeout());
+            conn.setReadTimeout(overrides.readTimeout());
             conn.connect();
             conn.getInputStream().close();
         } catch (final IOException ignored) {
@@ -91,4 +120,35 @@ public final class WeAreOnline implements ExecutionCondition {
         return online;
     }
 
+    /**
+     * Default settings if WeAreOnlineOverride is not present.
+     * @since 0.2.0
+     */
+    private static class DefaultSettings implements Annotation, WeAreOnlineOverride {
+
+        @Override
+        public String url() {
+            return "https://www.google.com";
+        }
+
+        @Override
+        public int connectTimeout() {
+            return 300;
+        }
+
+        @Override
+        public int readTimeout() {
+            return 1000;
+        }
+
+        @Override
+        public Class<? extends Annotation> annotationType() {
+            return WeAreOnlineOverride.class;
+        }
+
+        @Override
+        public boolean offline() {
+            return false;
+        }
+    }
 }
