@@ -94,7 +94,7 @@ public final class WeAreOnline implements ExecutionCondition {
             .flatMap(
                 element -> AnnotationUtils.findAnnotation(element, OnlineMeans.class)
             )
-            .orElse(new DefaultOnlineMeans());
+            .orElseGet(DefaultOnlineMeans::new);
     }
 
     /**
