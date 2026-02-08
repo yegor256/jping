@@ -105,7 +105,7 @@ public final class WeAreOnline implements ExecutionCondition {
      * Default options if OnlineMeans is not present.
      * @since 0.2.0
      */
-    private static class DefaultOnlineMeans implements Annotation, OnlineMeans {
+    private static final class DefaultOnlineMeans implements Annotation, OnlineMeans {
 
         @Override
         public String url() {

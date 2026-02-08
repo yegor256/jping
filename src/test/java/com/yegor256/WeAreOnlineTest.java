@@ -4,12 +4,10 @@
  */
 package com.yegor256;
 
-import java.lang.reflect.AnnotatedElement;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
@@ -30,24 +28,28 @@ final class WeAreOnlineTest {
 
     @Test
     void checkOfflineStatus() {
-        final AnnotatedElement element = ReflectionUtils.getRequiredMethod(
-            WeAreOnlineTest.class, "overrideTimeout"
-        );
-        final ExtensionContext context = WeAreOnlineDefaultContext.withElement(element);
         MatcherAssert.assertThat(
-            new WeAreOnline().evaluateExecutionCondition(context).isDisabled(),
+            new WeAreOnline().evaluateExecutionCondition(
+                WeAreOnlineDefaultContext.withElement(
+                    ReflectionUtils.getRequiredMethod(
+                        WeAreOnlineTest.class, "overrideTimeout"
+                    )
+                )
+            ).isDisabled(),
             Matchers.is(true)
         );
     }
 
     @Test
     void checkInvertOnlineStatus() {
-        final AnnotatedElement element = ReflectionUtils.getRequiredMethod(
-            WeAreOnlineTest.class, "overrideOfflineMode"
-        );
-        final ExtensionContext context = WeAreOnlineDefaultContext.withElement(element);
         MatcherAssert.assertThat(
-            new WeAreOnline().evaluateExecutionCondition(context).isDisabled(),
+            new WeAreOnline().evaluateExecutionCondition(
+                WeAreOnlineDefaultContext.withElement(
+                    ReflectionUtils.getRequiredMethod(
+                        WeAreOnlineTest.class, "overrideOfflineMode"
+                    )
+                )
+            ).isDisabled(),
             Matchers.is(true)
         );
     }
