@@ -75,13 +75,13 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.11.3</version>
+      <version>5.14.3</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-commons</artifactId>
-      <version>1.11.3</version>
+      <version>1.14.3</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -93,7 +93,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.11.3</version>
+      <version>5.14.3</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
