@@ -22,12 +22,28 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
  *
  * @since 0.2.0
  */
-final class WeAreOnlineDefaultContext implements ExtensionContext {
+public final class WeAreOnlineDefaultContext implements ExtensionContext {
 
     /**
      * Annotated element for context.
      */
-    private AnnotatedElement element;
+    private final AnnotatedElement element;
+
+    /**
+     * Ctor.
+     */
+    public WeAreOnlineDefaultContext() {
+        this(null);
+    }
+
+    /**
+     * Ctor.
+     *
+     * @param elm Annotated element
+     */
+    public WeAreOnlineDefaultContext(final AnnotatedElement elm) {
+        this.element = elm;
+    }
 
     @Override
     public Optional<ExtensionContext> getParent() {
@@ -61,7 +77,15 @@ final class WeAreOnlineDefaultContext implements ExtensionContext {
 
     @Override
     public Optional<Class<?>> getTestClass() {
-        return Optional.empty();
+        final Optional<Class<?>> result;
+        if (this.element instanceof Class<?>) {
+            result = Optional.of((Class<?>) this.element);
+        } else if (this.element instanceof Method) {
+            result = Optional.of(((Method) this.element).getDeclaringClass());
+        } else {
+            result = Optional.empty();
+        }
+        return result;
     }
 
     @Override
@@ -81,7 +105,13 @@ final class WeAreOnlineDefaultContext implements ExtensionContext {
 
     @Override
     public Optional<Method> getTestMethod() {
-        return Optional.empty();
+        final Optional<Method> result;
+        if (this.element instanceof Method) {
+            result = Optional.of((Method) this.element);
+        } else {
+            result = Optional.empty();
+        }
+        return result;
     }
 
     @Override
@@ -95,8 +125,10 @@ final class WeAreOnlineDefaultContext implements ExtensionContext {
     }
 
     @Override
-    public <T> Optional<T> getConfigurationParameter(final String key,
-        final Function<String, T> transformer) {
+    public <T> Optional<T> getConfigurationParameter(
+        final String key,
+        final Function<String, T> transformer
+    ) {
         return Optional.empty();
     }
 
@@ -120,14 +152,4 @@ final class WeAreOnlineDefaultContext implements ExtensionContext {
         return null;
     }
 
-    /**
-     * Create context with custom annotated element.
-     * @param element Annotated element
-     * @return Context with annotated element
-     */
-    static WeAreOnlineDefaultContext withElement(final AnnotatedElement element) {
-        final WeAreOnlineDefaultContext context = new WeAreOnlineDefaultContext();
-        context.element = element;
-        return context;
-    }
 }
