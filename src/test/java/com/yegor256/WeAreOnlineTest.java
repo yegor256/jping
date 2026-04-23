@@ -30,7 +30,7 @@ final class WeAreOnlineTest {
     void checkOfflineStatus() {
         MatcherAssert.assertThat(
             new WeAreOnline().evaluateExecutionCondition(
-                WeAreOnlineDefaultContext.withElement(
+                new WeAreOnlineDefaultContext(
                     ReflectionUtils.getRequiredMethod(
                         WeAreOnlineTest.class, "overrideTimeout"
                     )
@@ -44,7 +44,7 @@ final class WeAreOnlineTest {
     void checkInvertOnlineStatus() {
         MatcherAssert.assertThat(
             new WeAreOnline().evaluateExecutionCondition(
-                WeAreOnlineDefaultContext.withElement(
+                new WeAreOnlineDefaultContext(
                     ReflectionUtils.getRequiredMethod(
                         WeAreOnlineTest.class, "overrideOfflineMode"
                     )
@@ -54,8 +54,36 @@ final class WeAreOnlineTest {
         );
     }
 
+    @Test
+    void keepsEnabledWhenOptionalRequestFails() {
+        MatcherAssert.assertThat(
+            new WeAreOnline().evaluateExecutionCondition(
+                new WeAreOnlineDefaultContext(
+                    ReflectionUtils.getRequiredMethod(
+                        WeAreOnlineTest.class, "overrideOptionalRequest"
+                    )
+                )
+            ).isDisabled(),
+            Matchers.is(false)
+        );
+    }
+
+    @Test
+    void disablesWhenMandatoryRequestFails() {
+        MatcherAssert.assertThat(
+            new WeAreOnline().evaluateExecutionCondition(
+                new WeAreOnlineDefaultContext(
+                    ReflectionUtils.getRequiredMethod(
+                        WeAreOnlineTest.class, "overrideMandatoryRequest"
+                    )
+                )
+            ).isDisabled(),
+            Matchers.is(true)
+        );
+    }
+
     @SuppressWarnings("unused")
-    @OnlineMeans(connectTimeout = 1, readTimeout = 1)
+    @OnlineMeans(url = "http://127.0.0.1:1")
     private void overrideTimeout() {
         // empty method for test override annotation
     }
@@ -63,6 +91,31 @@ final class WeAreOnlineTest {
     @SuppressWarnings("unused")
     @OnlineMeans(offline = true)
     private void overrideOfflineMode() {
+        // empty method for test override annotation
+    }
+
+    @SuppressWarnings("unused")
+    @OnlineMeans(
+        requests = {
+            @Request(url = "https://www.google.com"),
+            @Request(
+                url = "http://127.0.0.1:1",
+                strategy = RequestStrategy.OPTIONAL
+            )
+        }
+    )
+    private void overrideOptionalRequest() {
+        // empty method for test override annotation
+    }
+
+    @SuppressWarnings("unused")
+    @OnlineMeans(
+        requests = {
+            @Request(url = "https://www.google.com"),
+            @Request(url = "http://127.0.0.1:1")
+        }
+    )
+    private void overrideMandatoryRequest() {
         // empty method for test override annotation
     }
 }
