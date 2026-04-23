@@ -22,7 +22,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
  *
  * @since 0.2.0
  */
-public final class WeAreOnlineDefaultContext implements ExtensionContext {
+public final class WeAreOnlineDefaultContext extends WeAreOnlineBaseContext {
 
     /**
      * Annotated element for context.
@@ -42,6 +42,7 @@ public final class WeAreOnlineDefaultContext implements ExtensionContext {
      * @param elm Annotated element
      */
     public WeAreOnlineDefaultContext(final AnnotatedElement elm) {
+        super();
         this.element = elm;
     }
 
@@ -127,14 +128,14 @@ public final class WeAreOnlineDefaultContext implements ExtensionContext {
     @Override
     public <T> Optional<T> getConfigurationParameter(
         final String key,
-        final Function<String, T> transformer
+        final Function<? super String, ? extends T> transformer
     ) {
         return Optional.empty();
     }
 
     @Override
     public void publishReportEntry(final Map<String, String> map) {
-        // nothing
+        throw new UnsupportedOperationException("publishReportEntry not supported");
     }
 
     @Override
