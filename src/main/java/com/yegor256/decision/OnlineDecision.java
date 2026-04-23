@@ -35,7 +35,7 @@ public final class OnlineDecision {
     }
 
     public OnlineDecision inverted() {
-        return new OnlineDecision(!this.enabled, this.reason);
+        return new com.yegor256.decision.OnlineDecision(!this.enabled, this.reason);
     }
 
     public ConditionEvaluationResult asJUnit() {

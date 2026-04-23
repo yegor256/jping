@@ -4,7 +4,6 @@
  */
 package com.yegor256.probe;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import org.hamcrest.MatcherAssert;
@@ -19,11 +18,11 @@ import org.junit.jupiter.api.Test;
 final class CancellationTest {
 
     @Test
-    @SuppressWarnings("PMD.CloseResource")
     void cancelsFutures() {
-        final ExecutorService service = Executors.newSingleThreadExecutor();
-        try {
-            final Future<?> future = service.submit(
+        try (
+            ProbeExecution execution = new ProbeExecution(Executors.newSingleThreadExecutor())
+        ) {
+            final Future<?> future = execution.submit(
                 () -> {
                     try {
                         Thread.sleep(1000L);
@@ -32,10 +31,8 @@ final class CancellationTest {
                     }
                 }
             );
-            new Cancellation(service, future).now();
+            execution.cancellation(future).now();
             MatcherAssert.assertThat(future.isCancelled(), Matchers.is(true));
-        } finally {
-            service.shutdownNow();
         }
     }
 }

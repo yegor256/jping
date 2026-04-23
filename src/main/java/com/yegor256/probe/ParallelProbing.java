@@ -6,9 +6,9 @@ package com.yegor256.probe;
 
 import com.yegor256.decision.ProbingOutcome;
 import com.yegor256.expectation.Expectation;
+import com.yegor256.expectation.ExpectationsAsList;
+import java.util.List;
 import java.util.concurrent.CompletionService;
-import java.util.concurrent.ExecutorCompletionService;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 /**
@@ -26,7 +26,7 @@ public final class ParallelProbing {
     /**
      * Expectations to check.
      */
-    private final Expectation[] expectations;
+    private final List<Expectation> expectations;
 
     /**
      * Ctor.
@@ -34,25 +34,38 @@ public final class ParallelProbing {
      * @param prb Probe to use
      * @param exps Expectations to check
      */
+    // @checkstyle ConstructorsCodeFreeCheck (1 line)
     public ParallelProbing(final Probe prb, final Expectation... exps) {
-        this.expectations = exps.clone();
+        this(prb, new ExpectationsAsList(exps));
+    }
+
+    /**
+     * Ctor.
+     *
+     * @param prb Probe to use
+     * @param exps Expectations to check
+     */
+    public ParallelProbing(final Probe prb, final List<Expectation> exps) {
+        this.expectations = exps;
         this.probe = prb;
     }
 
-    @SuppressWarnings("PMD.CloseResource")
     public ProbingOutcome outcome() {
-        final ExecutorService service = new ProbeThreads(this.expectations.length).service();
-        final CompletionService<ProbeResult> completion = new ExecutorCompletionService<>(service);
-        final Future<?>[] futures = new Future<?>[this.expectations.length];
         boolean success = false;
         boolean failed = false;
         ProbingOutcome outcome = new ProbingOutcome(false, "No request succeeded");
-        try {
-            this.submitAll(completion, futures);
+        try (
+            ProbeExecution execution = new ProbeExecution(
+                new ProbeThreads(this.expectations.size()).service()
+            )
+        ) {
+            final CompletionService<ProbeResult> completion = execution.completion();
+            final Future<?>[] futures = new Future<?>[this.expectations.size()];
+            this.submitAll(execution, futures);
             for (final Expectation ignored : this.expectations) {
                 final ProbeResult result = new CompletedProbe(completion).result();
                 if (!result.acceptable()) {
-                    new Cancellation(service, futures).now();
+                    execution.cancellation(futures).now();
                     failed = true;
                     outcome = new ProbingOutcome(false, result.explanation());
                     break;
@@ -64,19 +77,17 @@ public final class ParallelProbing {
             if (success && !failed) {
                 outcome = new ProbingOutcome(true, "Connectivity expectations satisfied");
             }
-        } finally {
-            service.shutdownNow();
         }
         return outcome;
     }
 
     private void submitAll(
-        final CompletionService<ProbeResult> completion,
+        final ProbeExecution execution,
         final Future<?>... futures
     ) {
-        for (int idx = 0; idx < this.expectations.length; idx += 1) {
-            futures[idx] = completion.submit(
-                new ProbeJob(this.expectations[idx], this.probe)
+        for (int idx = 0; idx < this.expectations.size(); idx += 1) {
+            futures[idx] = execution.submit(
+                new ProbeJob(this.expectations.get(idx), this.probe)
             );
         }
     }

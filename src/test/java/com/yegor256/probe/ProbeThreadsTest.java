@@ -4,7 +4,6 @@
  */
 package com.yegor256.probe;
 
-import java.util.concurrent.ExecutorService;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -17,13 +16,12 @@ import org.junit.jupiter.api.Test;
 final class ProbeThreadsTest {
 
     @Test
-    @SuppressWarnings("PMD.CloseResource")
     void createsExecutor() {
-        final ExecutorService service = new ProbeThreads(0).service();
+        final ProbeExecution execution = new ProbeExecution(new ProbeThreads(0).service());
         try {
-            MatcherAssert.assertThat(service.isShutdown(), Matchers.is(false));
+            MatcherAssert.assertThat(execution.shutdown(), Matchers.is(false));
         } finally {
-            service.shutdownNow();
+            execution.close();
         }
     }
 }

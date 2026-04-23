@@ -61,6 +61,6 @@ public final class HttpProbe implements Probe {
 
     @Override
     public Probe withTimeouts(final ProbeTimeouts limits) {
-        return new HttpProbe(limits);
+        return new com.yegor256.probe.HttpProbe(limits);
     }
 }

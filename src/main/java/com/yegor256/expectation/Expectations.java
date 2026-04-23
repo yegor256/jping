@@ -8,6 +8,7 @@ import com.yegor256.decision.DecisionFromExpectations;
 import com.yegor256.decision.OnlineDecision;
 import com.yegor256.probe.ParallelProbing;
 import com.yegor256.probe.Probe;
+import java.util.List;
 
 /**
  * Expectations.
@@ -19,15 +20,25 @@ public final class Expectations {
     /**
      * All expectations.
      */
-    private final Expectation[] items;
+    private final List<Expectation> items;
 
     /**
      * Ctor.
      *
      * @param exps Expectations
      */
+    // @checkstyle ConstructorsCodeFreeCheck (1 line)
     public Expectations(final Expectation... exps) {
-        this.items = exps.clone();
+        this(new ExpectationsAsList(exps));
+    }
+
+    /**
+     * Ctor.
+     *
+     * @param exps Expectations
+     */
+    public Expectations(final List<Expectation> exps) {
+        this.items = exps;
     }
 
     public OnlineDecision checkedBy(final Probe probe) {

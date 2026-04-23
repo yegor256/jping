@@ -56,7 +56,7 @@ public final class ProbeResult {
     }
 
     public ProbeResult matchedAgainst(final Expectation exp) {
-        return new ProbeResult(this.url, this.reachability, exp);
+        return new com.yegor256.probe.ProbeResult(this.url, this.reachability, exp);
     }
 
     public boolean acceptable() {

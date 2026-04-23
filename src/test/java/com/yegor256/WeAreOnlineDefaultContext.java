@@ -151,5 +151,4 @@ public final class WeAreOnlineDefaultContext implements ExtensionContext {
     public ExecutableInvoker getExecutableInvoker() {
         return null;
     }
-
 }

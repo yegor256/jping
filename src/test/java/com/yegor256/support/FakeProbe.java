@@ -52,7 +52,7 @@ public final class FakeProbe implements Probe {
 
     @Override
     public Probe withTimeouts(final ProbeTimeouts limits) {
-        return new FakeProbe(this.results, limits);
+        return new com.yegor256.support.FakeProbe(this.results, limits);
     }
 
     /**
@@ -65,7 +65,7 @@ public final class FakeProbe implements Probe {
     public FakeProbe with(final String url, final ProbeResult result) {
         final Map<String, ProbeResult> items = new HashMap<>(this.results);
         items.put(url, result);
-        return new FakeProbe(items, this.timeouts);
+        return new com.yegor256.support.FakeProbe(items, this.timeouts);
     }
 
     /**
