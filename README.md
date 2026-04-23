@@ -1,3 +1,5 @@
+# jping
+
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![DevOps By Rultor.com](https://www.rultor.com/b/yegor256/jping)](https://www.rultor.com/p/yegor256/jping)
 [![We recommend IntelliJ IDEA](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
@@ -10,7 +12,8 @@
 [![Hits-of-Code](https://hitsofcode.com/github/yegor256/jping)](https://hitsofcode.com/view/github/yegor256/jping)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/jping/blob/master/LICENSE.txt)
 
-JUnit5 execution condition that checks whether a connection to public Internet is available.
+JUnit5 execution condition that checks whether a connection to public
+Internet is available.
 
 First, you add this to your `pom.xml`:
 
@@ -43,6 +46,8 @@ Or if need to override default settings:
 
 ```java
 import com.yegor256.OnlineMeans;
+import com.yegor256.Request;
+import com.yegor256.RequestStrategy;
 import com.yegor256.WeAreOnline;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,12 +55,48 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(WeAreOnline.class)
 final class MyTest {
     @Test
-    @OnlineMeans(url = "https://www.amazon.com", connectTimeout = 500, readTimeout = 1500)
+    @OnlineMeans(
+        url = "https://www.amazon.com",
+        connectTimeout = 500,
+        readTimeout = 1500
+    )
     void canDownloadViaHttp() throws Exception {
         new URL("https://www.amazon.com").openStream();
     }
 }
 ```
+
+It is also possible to configure a few requests:
+
+```java
+import com.yegor256.OnlineMeans;
+import com.yegor256.Request;
+import com.yegor256.RequestStrategy;
+import com.yegor256.WeAreOnline;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@ExtendWith(WeAreOnline.class)
+final class MyTest {
+    @Test
+    @OnlineMeans(
+        requests = {
+            @Request(url = "https://www.google.com"),
+            @Request(
+                url = "http://127.0.0.1:1",
+                strategy = RequestStrategy.OPTIONAL
+            )
+        }
+    )
+    void canDownloadViaHttp() throws Exception {
+        new URL("https://www.google.com").openStream();
+    }
+}
+```
+
+When `requests` are used, each request is checked in parallel.
+`MANDATORY` requests must succeed, while `OPTIONAL` ones may fail.
+The old `url` attribute is still supported for backward compatibility.
 
 We don't want this unit test to be executed when no Internet connection
 is available. The `WeAreOnline` execution condition will prevent JUnit5 from
@@ -69,7 +110,7 @@ provided they don't violate our quality standards. To avoid frustration,
 before sending us your pull request please run full Maven build:
 
 ```bash
-$ mvn clean install -Pqulice
+mvn clean install -Pqulice
 ```
 
 You will need Maven 3.3+ and Java 8+.

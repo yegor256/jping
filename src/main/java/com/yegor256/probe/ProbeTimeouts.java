@@ -24,12 +24,12 @@ public final class ProbeTimeouts {
     /**
      * Ctor.
      *
-     * @param cto Connect timeout
-     * @param rto Read timeout
+     * @param connect Connect timeout
+     * @param read Read timeout
      */
-    public ProbeTimeouts(final int cto, final int rto) {
-        this.connection = cto;
-        this.reading = rto;
+    public ProbeTimeouts(final int connect, final int read) {
+        this.connection = connect;
+        this.reading = read;
     }
 
     public int connect() {
