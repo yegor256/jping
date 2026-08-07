@@ -9,7 +9,6 @@ import java.util.concurrent.Future;
 
 /**
  * Futures as list.
- *
  * @since 0.3.0
  */
 public final class FuturesAsList extends AbstractList<Future<?>> {
@@ -21,7 +20,6 @@ public final class FuturesAsList extends AbstractList<Future<?>> {
 
     /**
      * Ctor.
-     *
      * @param items Futures
      */
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")

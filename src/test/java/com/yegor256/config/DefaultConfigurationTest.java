@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link DefaultConfiguration}.
- *
  * @since 0.3.0
  */
 final class DefaultConfigurationTest {

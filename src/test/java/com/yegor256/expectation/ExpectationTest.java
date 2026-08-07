@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Expectation}.
- *
  * @since 0.3.0
  */
 final class ExpectationTest {
@@ -43,19 +42,17 @@ final class ExpectationTest {
     }
 
     @Test
-    @SuppressWarnings("PMD.UnitTestContainsTooManyAsserts")
     void checksUrlWithProbe() {
         MatcherAssert.assertThat(
-            new Expectation(ExpectationTest.URL, RequestStrategy.MANDATORY)
-                .checkedBy(
-                    new FakeProbe().with(
+            new Expectation(ExpectationTest.URL, RequestStrategy.MANDATORY).checkedBy(
+                new FakeProbe().with(
+                    ExpectationTest.URL,
+                    new ProbeResult(
                         ExpectationTest.URL,
-                        new ProbeResult(
-                            ExpectationTest.URL,
-                            new Reachability(true, "reachable")
-                        )
+                        new Reachability(true, "reachable")
                     )
-                ).successful(),
+                )
+            ).successful(),
             Matchers.is(true)
         );
     }

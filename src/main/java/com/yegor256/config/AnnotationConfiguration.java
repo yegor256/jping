@@ -13,7 +13,6 @@ import com.yegor256.probe.ProbeTimeouts;
 
 /**
  * Annotation configuration.
- *
  * @since 0.3.0
  */
 public final class AnnotationConfiguration implements OnlineConfiguration {
@@ -25,7 +24,6 @@ public final class AnnotationConfiguration implements OnlineConfiguration {
 
     /**
      * Ctor.
-     *
      * @param annt Source annotation
      */
     public AnnotationConfiguration(final OnlineMeans annt) {
@@ -42,8 +40,7 @@ public final class AnnotationConfiguration implements OnlineConfiguration {
         return new Inversion(
             this.annotation.offline(),
             new ExpectationsFrom(this.annotation)
-                .expectations()
-                .checkedBy(
+                .expectations().checkedBy(
                     probe.withTimeouts(
                         new ProbeTimeouts(
                             this.annotation.connectTimeout(),

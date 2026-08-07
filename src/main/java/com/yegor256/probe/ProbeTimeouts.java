@@ -6,7 +6,6 @@ package com.yegor256.probe;
 
 /**
  * Probe timeouts.
- *
  * @since 0.3.0
  */
 public final class ProbeTimeouts {
@@ -23,7 +22,6 @@ public final class ProbeTimeouts {
 
     /**
      * Ctor.
-     *
      * @param connect Connect timeout
      * @param read Read timeout
      */

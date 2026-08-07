@@ -5,7 +5,6 @@
 
 /**
  * JUnit5 Execution Condition to check that a public Internet connection is online.
- *
  * @since 0.0.1
  */
 package com.yegor256;

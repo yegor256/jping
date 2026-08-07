@@ -12,7 +12,6 @@ import java.util.List;
 
 /**
  * Expectations.
- *
  * @since 0.3.0
  */
 public final class Expectations {
@@ -24,17 +23,14 @@ public final class Expectations {
 
     /**
      * Ctor.
-     *
      * @param exps Expectations
      */
-    // @checkstyle ConstructorsCodeFreeCheck (1 line)
     public Expectations(final Expectation... exps) {
         this(new ExpectationsAsList(exps));
     }
 
     /**
      * Ctor.
-     *
      * @param exps Expectations
      */
     public Expectations(final List<Expectation> exps) {

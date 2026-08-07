@@ -9,7 +9,6 @@ import com.yegor256.probe.Probe;
 
 /**
  * Missing configuration.
- *
  * @since 0.3.0
  */
 public final class MissingConfiguration implements OnlineConfiguration {

@@ -8,7 +8,6 @@ import com.yegor256.expectation.Expectation;
 
 /**
  * Probe result.
- *
  * @since 0.3.0
  */
 public final class ProbeResult {
@@ -30,7 +29,6 @@ public final class ProbeResult {
 
     /**
      * New result.
-     *
      * @param target Checked URL
      * @param state Actual reachability
      */
@@ -40,7 +38,6 @@ public final class ProbeResult {
 
     /**
      * New result.
-     *
      * @param target Checked URL
      * @param state Actual reachability
      * @param exp Bound expectation

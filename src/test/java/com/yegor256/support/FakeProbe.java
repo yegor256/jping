@@ -12,7 +12,6 @@ import java.util.Map;
 
 /**
  * Fake probe for tests.
- *
  * @since 0.3.0
  */
 public final class FakeProbe implements Probe {
@@ -36,7 +35,6 @@ public final class FakeProbe implements Probe {
 
     /**
      * Ctor.
-     *
      * @param items  Results
      * @param limits Timeouts
      */
@@ -57,7 +55,6 @@ public final class FakeProbe implements Probe {
 
     /**
      * Add one result.
-     *
      * @param url    URL
      * @param result Result
      * @return New fake probe
@@ -70,7 +67,6 @@ public final class FakeProbe implements Probe {
 
     /**
      * Connect timeout.
-     *
      * @return Timeout
      */
     public int connectTimeout() {
@@ -79,7 +75,6 @@ public final class FakeProbe implements Probe {
 
     /**
      * Read timeout.
-     *
      * @return Timeout
      */
     public int readTimeout() {

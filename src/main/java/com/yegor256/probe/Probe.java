@@ -6,7 +6,6 @@ package com.yegor256.probe;
 
 /**
  * Probe.
- *
  * @since 0.3.0
  */
 public interface Probe {

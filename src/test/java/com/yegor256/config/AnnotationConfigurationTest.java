@@ -17,7 +17,6 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link AnnotationConfiguration}.
- *
  * @since 0.3.0
  */
 final class AnnotationConfigurationTest {
@@ -37,7 +36,6 @@ final class AnnotationConfigurationTest {
     }
 
     @Test
-    @SuppressWarnings("PMD.UnitTestContainsTooManyAsserts")
     void checksWithConfiguredTimeouts() {
         final OnlineMeans annotation = this.annotation("mandatory");
         final FakeProbe probe = new FakeProbe().with(
@@ -60,7 +58,6 @@ final class AnnotationConfigurationTest {
     }
 
     @Test
-    @SuppressWarnings("PMD.UnitTestContainsTooManyAsserts")
     void invertsDecisionWhenOfflineModeIsEnabled() {
         MatcherAssert.assertThat(
             new AnnotationConfiguration(this.annotation("offline")).checkedBy(

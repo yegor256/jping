@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link MissingConfiguration}.
- *
  * @since 0.3.0
  */
 final class MissingConfigurationTest {

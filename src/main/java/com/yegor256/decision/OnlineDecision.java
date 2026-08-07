@@ -8,7 +8,6 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 
 /**
  * Online decision.
- *
  * @since 0.3.0
  */
 public final class OnlineDecision {
@@ -25,7 +24,6 @@ public final class OnlineDecision {
 
     /**
      * Ctor.
-     *
      * @param mode Enabled flag
      * @param text Decision reason
      */

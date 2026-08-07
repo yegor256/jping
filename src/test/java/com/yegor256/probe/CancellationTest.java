@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Cancellation}.
- *
  * @since 0.3.0
  */
 final class CancellationTest {

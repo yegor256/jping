@@ -10,7 +10,6 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * Request expectation.
- *
  * @since 0.3.0
  */
 @Documented
@@ -19,14 +18,12 @@ public @interface Request {
 
     /**
      * URL to check.
-     *
      * @return URL
      */
     String url();
 
     /**
      * Request strategy.
-     *
      * @return Strategy
      */
     RequestStrategy strategy() default RequestStrategy.MANDATORY;

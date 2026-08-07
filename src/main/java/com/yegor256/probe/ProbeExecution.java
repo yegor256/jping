@@ -12,7 +12,6 @@ import java.util.concurrent.Future;
 
 /**
  * Probe execution.
- *
  * @since 0.3.0
  */
 public final class ProbeExecution implements AutoCloseable {
@@ -29,7 +28,6 @@ public final class ProbeExecution implements AutoCloseable {
 
     /**
      * Ctor.
-     *
      * @param executor Executor service
      */
     public ProbeExecution(final ExecutorService executor) {
@@ -39,7 +37,6 @@ public final class ProbeExecution implements AutoCloseable {
 
     /**
      * Completion service.
-     *
      * @return Completion service
      */
     public CompletionService<ProbeResult> completion() {
@@ -48,7 +45,6 @@ public final class ProbeExecution implements AutoCloseable {
 
     /**
      * Submit one job.
-     *
      * @param job Probe job
      * @return Future
      */
@@ -58,7 +54,6 @@ public final class ProbeExecution implements AutoCloseable {
 
     /**
      * Submit one action.
-     *
      * @param action Action
      * @return Future
      */
@@ -68,7 +63,6 @@ public final class ProbeExecution implements AutoCloseable {
 
     /**
      * Create cancellation.
-     *
      * @param items Futures
      * @return Cancellation
      */
@@ -78,7 +72,6 @@ public final class ProbeExecution implements AutoCloseable {
 
     /**
      * Check shutdown state.
-     *
      * @return Shutdown flag
      */
     public boolean shutdown() {

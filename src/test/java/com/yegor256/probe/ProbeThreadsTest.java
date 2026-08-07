@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link ProbeThreads}.
- *
  * @since 0.3.0
  */
 final class ProbeThreadsTest {

@@ -15,7 +15,6 @@ import org.junit.jupiter.api.io.TempDir;
 
 /**
  * Test case for {@link HttpProbe}.
- *
  * @since 0.3.0
  */
 final class HttpProbeTest {

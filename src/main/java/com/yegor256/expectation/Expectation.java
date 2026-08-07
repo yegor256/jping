@@ -11,7 +11,6 @@ import com.yegor256.probe.Reachability;
 
 /**
  * One expectation.
- *
  * @since 0.3.0
  */
 public final class Expectation {
@@ -28,7 +27,6 @@ public final class Expectation {
 
     /**
      * Ctor.
-     *
      * @param url Target URL
      * @param mode Target strategy
      */

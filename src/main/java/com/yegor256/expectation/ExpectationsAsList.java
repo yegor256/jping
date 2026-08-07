@@ -8,7 +8,6 @@ import java.util.AbstractList;
 
 /**
  * Expectations as list.
- *
  * @since 0.3.0
  */
 public final class ExpectationsAsList extends AbstractList<Expectation> {
@@ -20,7 +19,6 @@ public final class ExpectationsAsList extends AbstractList<Expectation> {
 
     /**
      * Ctor.
-     *
      * @param exps Expectations
      */
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")

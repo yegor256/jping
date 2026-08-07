@@ -13,7 +13,6 @@ import org.junit.jupiter.api.function.ThrowingConsumer;
 
 /**
  * Base stubs for extra methods introduced by JUnit 6 ExtensionContext.
- *
  * @since 0.2.0
  */
 abstract class WeAreOnlineBaseContext implements ExtensionContext {

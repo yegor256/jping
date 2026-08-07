@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Expectations}.
- *
  * @since 0.3.0
  */
 final class ExpectationsTest {
@@ -25,7 +24,6 @@ final class ExpectationsTest {
     private static final String URL = "https://example.com";
 
     @Test
-    @SuppressWarnings("PMD.UnitTestContainsTooManyAsserts")
     void makesEnabledDecisionWhenMandatoryRequestSucceeds() {
         MatcherAssert.assertThat(
             new Expectations(

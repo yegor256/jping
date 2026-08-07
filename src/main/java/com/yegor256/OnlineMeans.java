@@ -12,7 +12,6 @@ import java.lang.annotation.Target;
 
 /**
  * Override ping options.
- *
  * @author ishchenko
  */
 @Documented
@@ -22,35 +21,30 @@ public @interface OnlineMeans {
 
     /**
      * URL to ping.
-     *
      * @return Public URL
      */
     String url() default "https://www.google.com";
 
     /**
      * Connection timeout.
-     *
      * @return Timeout in milliseconds
      */
     int connectTimeout() default 300;
 
     /**
      * Read timeout.
-     *
      * @return Timeout in milliseconds
      */
     int readTimeout() default 1000;
 
     /**
      * Set true if test should run only then offline.
-     *
      * @return Offline mode
      */
     boolean offline() default false;
 
     /**
      * Requests that define online expectations.
-     *
      * @return Requests to verify
      */
     Request[] requests() default {};

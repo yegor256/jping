@@ -10,7 +10,6 @@ import com.yegor256.probe.Probe;
 
 /**
  * Fake configuration.
- *
  * @since 0.3.0
  */
 public final class FakeConfiguration implements OnlineConfiguration {
@@ -22,7 +21,6 @@ public final class FakeConfiguration implements OnlineConfiguration {
 
     /**
      * Ctor.
-     *
      * @param outcome Decision
      */
     public FakeConfiguration(final OnlineDecision outcome) {

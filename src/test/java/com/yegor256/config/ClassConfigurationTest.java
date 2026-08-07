@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link ClassConfiguration}.
- *
  * @since 0.3.0
  */
 @OnlineMeans(url = "https://example.com")

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link DefaultOnlineMeans}.
- *
  * @since 0.3.0
  */
 final class DefaultOnlineMeansTest {

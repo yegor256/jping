@@ -6,7 +6,6 @@ package com.yegor256.config;
 
 /**
  * Merged configuration.
- *
  * @since 0.3.0
  */
 public final class MergedConfiguration implements ConfigurationSource {
@@ -28,7 +27,6 @@ public final class MergedConfiguration implements ConfigurationSource {
 
     /**
      * Ctor.
-     *
      * @param first Primary source
      * @param second Secondary source
      * @param third Fallback source

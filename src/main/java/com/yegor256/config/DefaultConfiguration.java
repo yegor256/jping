@@ -6,7 +6,6 @@ package com.yegor256.config;
 
 /**
  * Default configuration.
- *
  * @since 0.3.0
  */
 public final class DefaultConfiguration implements ConfigurationSource {
