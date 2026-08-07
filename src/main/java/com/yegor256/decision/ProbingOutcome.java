@@ -30,6 +30,10 @@ public final class ProbingOutcome {
         this.reason = text;
     }
 
+    /**
+     * Convert to an online decision.
+     * @return Online decision
+     */
     public OnlineDecision decision() {
         return new OnlineDecision(this.success, this.reason);
     }

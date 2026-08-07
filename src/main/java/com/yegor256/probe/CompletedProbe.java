@@ -26,6 +26,10 @@ public final class CompletedProbe {
         this.completion = cpl;
     }
 
+    /**
+     * Take the next completed result.
+     * @return Probe result
+     */
     public ProbeResult result() {
         try {
             return this.completion.take().get();

@@ -32,10 +32,18 @@ public final class OnlineDecision {
         this.reason = text;
     }
 
+    /**
+     * Invert this decision.
+     * @return Inverted decision
+     */
     public OnlineDecision inverted() {
         return new com.yegor256.decision.OnlineDecision(!this.enabled, this.reason);
     }
 
+    /**
+     * Convert to a JUnit condition evaluation result.
+     * @return Evaluation result
+     */
     public ConditionEvaluationResult asJUnit() {
         final ConditionEvaluationResult result;
         if (this.enabled) {

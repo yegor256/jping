@@ -23,6 +23,10 @@ public final class DecisionFromExpectations {
         this.outcome = raw;
     }
 
+    /**
+     * Make a decision.
+     * @return Online decision
+     */
     public OnlineDecision decision() {
         return this.outcome.decision();
     }

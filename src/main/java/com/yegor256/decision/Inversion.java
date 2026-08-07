@@ -30,6 +30,10 @@ public final class Inversion {
         this.source = decision;
     }
 
+    /**
+     * Invert the origin decision, if needed.
+     * @return Online decision
+     */
     public OnlineDecision decision() {
         final OnlineDecision result;
         if (this.inverted) {

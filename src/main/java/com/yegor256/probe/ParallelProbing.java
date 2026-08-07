@@ -46,6 +46,10 @@ public final class ParallelProbing {
         this.probe = prb;
     }
 
+    /**
+     * Probe all expectations in parallel.
+     * @return Probing outcome
+     */
     public ProbingOutcome outcome() {
         boolean success = false;
         boolean failed = false;

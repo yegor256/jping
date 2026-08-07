@@ -26,6 +26,10 @@ public final class ProbeThreads {
         this.total = size;
     }
 
+    /**
+     * Build the executor service.
+     * @return Executor service
+     */
     public ExecutorService service() {
         final int size;
         if (this.total == 0) {

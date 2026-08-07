@@ -43,6 +43,9 @@ public final class Cancellation {
         this.futures = items;
     }
 
+    /**
+     * Cancel all futures and shut the service down.
+     */
     public void now() {
         for (final Future<?> future : this.futures) {
             future.cancel(true);

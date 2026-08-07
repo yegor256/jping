@@ -34,6 +34,10 @@ public final class DecisionFrom {
         this.probe = prb;
     }
 
+    /**
+     * Make a decision.
+     * @return Evaluation result
+     */
     public ConditionEvaluationResult result() {
         return this.source
             .configuration()

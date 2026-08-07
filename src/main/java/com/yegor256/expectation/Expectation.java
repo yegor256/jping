@@ -35,10 +35,20 @@ public final class Expectation {
         this.strategy = mode;
     }
 
+    /**
+     * Check this expectation with a probe.
+     * @param probe Probe to use
+     * @return Probe result
+     */
     public ProbeResult checkedBy(final Probe probe) {
         return probe.probe(this.target).matchedAgainst(this);
     }
 
+    /**
+     * Check whether the reachability satisfies this expectation.
+     * @param reachability Reachability to check
+     * @return TRUE if satisfied
+     */
     public boolean satisfiedBy(final Reachability reachability) {
         final boolean accepted;
         if (this.strategy == RequestStrategy.MANDATORY) {
@@ -49,6 +59,11 @@ public final class Expectation {
         return accepted;
     }
 
+    /**
+     * Explain the mismatch against the given reachability.
+     * @param reachability Reachability that failed to satisfy this expectation
+     * @return Explanation text
+     */
     public String mismatchAgainst(final Reachability reachability) {
         return String.format(
             "\"%s\" is %s while %s was required",
@@ -58,6 +73,10 @@ public final class Expectation {
         );
     }
 
+    /**
+     * Target URL.
+     * @return Target URL
+     */
     public String url() {
         return this.target;
     }

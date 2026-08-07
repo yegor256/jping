@@ -52,18 +52,35 @@ public final class ProbeResult {
         this.expectation = exp;
     }
 
+    /**
+     * Bind this result to an expectation.
+     * @param exp Expectation to bind
+     * @return New probe result
+     */
     public ProbeResult matchedAgainst(final Expectation exp) {
         return new com.yegor256.probe.ProbeResult(this.url, this.reachability, exp);
     }
 
+    /**
+     * Check whether this result satisfies its bound expectation.
+     * @return TRUE if acceptable
+     */
     public boolean acceptable() {
         return this.expectation.satisfiedBy(this.reachability);
     }
 
+    /**
+     * Check whether the target was reachable.
+     * @return TRUE if reachable
+     */
     public boolean successful() {
         return this.reachability.available();
     }
 
+    /**
+     * Explain this result.
+     * @return Explanation text
+     */
     public String explanation() {
         final String text;
         if (this.acceptable()) {

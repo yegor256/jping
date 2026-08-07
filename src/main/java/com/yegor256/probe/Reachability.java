@@ -30,10 +30,18 @@ public final class Reachability {
         this.text = descr;
     }
 
+    /**
+     * Availability flag.
+     * @return TRUE if available
+     */
     public boolean available() {
         return this.status;
     }
 
+    /**
+     * State description.
+     * @return Description text
+     */
     public String description() {
         return this.text;
     }

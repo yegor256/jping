@@ -27,6 +27,10 @@ public final class ExpectationsFrom {
         this.annotation = annt;
     }
 
+    /**
+     * Build expectations from the annotation.
+     * @return Expectations
+     */
     public Expectations expectations() {
         final Expectations all;
         if (this.annotation.requests().length == 0) {

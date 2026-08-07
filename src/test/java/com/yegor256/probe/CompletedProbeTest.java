@@ -5,6 +5,7 @@
 package com.yegor256.probe;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,10 @@ final class CompletedProbeTest {
         try (
             ProbeExecution execution = new ProbeExecution(Executors.newSingleThreadExecutor())
         ) {
-            execution.submit(
+            final Future<?> future = execution.submit(
                 () -> new ProbeResult("https://example.com", new Reachability(true, "ok"))
             );
+            future.get();
             MatcherAssert.assertThat(
                 new CompletedProbe(execution.completion()).result().successful(),
                 Matchers.is(true)

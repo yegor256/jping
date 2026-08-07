@@ -30,10 +30,18 @@ public final class ProbeTimeouts {
         this.reading = read;
     }
 
+    /**
+     * Connect timeout.
+     * @return Timeout in milliseconds
+     */
     public int connect() {
         return this.connection;
     }
 
+    /**
+     * Read timeout.
+     * @return Timeout in milliseconds
+     */
     public int read() {
         return this.reading;
     }

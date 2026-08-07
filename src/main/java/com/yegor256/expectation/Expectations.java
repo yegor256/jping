@@ -37,6 +37,11 @@ public final class Expectations {
         this.items = exps;
     }
 
+    /**
+     * Check all expectations with a probe.
+     * @param probe Probe to use
+     * @return Online decision
+     */
     public OnlineDecision checkedBy(final Probe probe) {
         return new DecisionFromExpectations(
             new ParallelProbing(probe, this.items).outcome()
