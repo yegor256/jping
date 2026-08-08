@@ -9,6 +9,7 @@ import java.util.concurrent.Callable;
 
 /**
  * Probe job.
+ *
  * @since 0.3.0
  */
 public final class ProbeJob implements Callable<ProbeResult> {
@@ -25,6 +26,7 @@ public final class ProbeJob implements Callable<ProbeResult> {
 
     /**
      * Ctor.
+     *
      * @param exp Expectation to check
      * @param prb Probe to use
      */

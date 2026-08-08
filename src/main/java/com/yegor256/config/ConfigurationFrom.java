@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
  * Configuration from context.
+ *
  * @since 0.3.0
  */
 public final class ConfigurationFrom implements ConfigurationSource {
@@ -19,6 +20,7 @@ public final class ConfigurationFrom implements ConfigurationSource {
 
     /**
      * Ctor.
+     *
      * @param cnt JUnit context
      */
     public ConfigurationFrom(final ExtensionContext cnt) {

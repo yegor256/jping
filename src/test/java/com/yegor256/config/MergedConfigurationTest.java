@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link MergedConfiguration}.
+ *
  * @since 0.3.0
  */
 final class MergedConfigurationTest {

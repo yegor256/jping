@@ -13,6 +13,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link MethodConfiguration}.
+ *
  * @since 0.3.0
  */
 final class MethodConfigurationTest {

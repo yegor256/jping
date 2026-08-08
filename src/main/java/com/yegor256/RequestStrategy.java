@@ -6,10 +6,10 @@ package com.yegor256;
 
 /**
  * Request strategy.
+ *
  * @since 0.3.0
  */
 public enum RequestStrategy {
-
     /**
      * Mandatory request.
      */

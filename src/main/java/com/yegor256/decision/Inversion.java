@@ -6,6 +6,7 @@ package com.yegor256.decision;
 
 /**
  * Inverted decision.
+ *
  * @since 0.3.0
  */
 public final class Inversion {
@@ -22,6 +23,7 @@ public final class Inversion {
 
     /**
      * Ctor.
+     *
      * @param mode Inversion mode
      * @param decision Origin decision
      */
@@ -30,10 +32,6 @@ public final class Inversion {
         this.source = decision;
     }
 
-    /**
-     * Invert the origin decision, if needed.
-     * @return Online decision
-     */
     public OnlineDecision decision() {
         final OnlineDecision result;
         if (this.inverted) {

@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link ParallelProbing}.
+ *
  * @since 0.3.0
  */
 final class ParallelProbingTest {
@@ -31,19 +32,21 @@ final class ParallelProbingTest {
     void succeedsWhenAllMandatoryRequestsSucceed() {
         MatcherAssert.assertThat(
             new ParallelProbing(
-                new FakeProbe().with(
-                    ParallelProbingTest.ONE,
-                    new ProbeResult(
+                new FakeProbe()
+                    .with(
                         ParallelProbingTest.ONE,
-                        new Reachability(true, "ok")
+                        new ProbeResult(
+                            ParallelProbingTest.ONE,
+                            new Reachability(true, "ok")
+                        )
                     )
-                ).with(
-                    ParallelProbingTest.TWO,
-                    new ProbeResult(
+                    .with(
                         ParallelProbingTest.TWO,
-                        new Reachability(false, "off")
-                    )
-                ),
+                        new ProbeResult(
+                            ParallelProbingTest.TWO,
+                            new Reachability(false, "off")
+                        )
+                    ),
                 new Expectation(ParallelProbingTest.ONE, RequestStrategy.MANDATORY),
                 new Expectation(ParallelProbingTest.TWO, RequestStrategy.OPTIONAL)
             ).outcome().decision().asJUnit().isDisabled(),

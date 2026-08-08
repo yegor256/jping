@@ -6,6 +6,7 @@ package com.yegor256.decision;
 
 /**
  * Probing outcome.
+ *
  * @since 0.3.0
  */
 public final class ProbingOutcome {
@@ -22,6 +23,7 @@ public final class ProbingOutcome {
 
     /**
      * Ctor.
+     *
      * @param mode Success flag
      * @param text Decision reason
      */
@@ -30,10 +32,6 @@ public final class ProbingOutcome {
         this.reason = text;
     }
 
-    /**
-     * Convert to an online decision.
-     * @return Online decision
-     */
     public OnlineDecision decision() {
         return new OnlineDecision(this.success, this.reason);
     }
