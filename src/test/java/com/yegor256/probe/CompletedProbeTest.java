@@ -5,13 +5,13 @@
 package com.yegor256.probe;
 
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link CompletedProbe}.
+ *
  * @since 0.3.0
  */
 final class CompletedProbeTest {
@@ -21,10 +21,9 @@ final class CompletedProbeTest {
         try (
             ProbeExecution execution = new ProbeExecution(Executors.newSingleThreadExecutor())
         ) {
-            final Future<?> future = execution.submit(
+            execution.submit(
                 () -> new ProbeResult("https://example.com", new Reachability(true, "ok"))
             );
-            future.get();
             MatcherAssert.assertThat(
                 new CompletedProbe(execution.completion()).result().successful(),
                 Matchers.is(true)

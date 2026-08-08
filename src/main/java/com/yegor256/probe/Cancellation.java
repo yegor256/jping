@@ -10,6 +10,7 @@ import java.util.concurrent.Future;
 
 /**
  * Task cancellation.
+ *
  * @since 0.3.0
  */
 public final class Cancellation {
@@ -26,15 +27,18 @@ public final class Cancellation {
 
     /**
      * Ctor.
+     *
      * @param executor Service to stop
      * @param items Futures to cancel
      */
+    // @checkstyle ConstructorsCodeFreeCheck (1 line)
     public Cancellation(final ExecutorService executor, final Future<?>... items) {
         this(executor, new FuturesAsList(items));
     }
 
     /**
      * Ctor.
+     *
      * @param executor Service to stop
      * @param items Futures to cancel
      */
@@ -43,9 +47,6 @@ public final class Cancellation {
         this.futures = items;
     }
 
-    /**
-     * Cancel all futures and shut the service down.
-     */
     public void now() {
         for (final Future<?> future : this.futures) {
             future.cancel(true);

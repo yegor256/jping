@@ -19,6 +19,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 
 /**
  * Extension context for tests.
+ *
  * @since 0.2.0
  */
 public final class WeAreOnlineDefaultContext extends WeAreOnlineBaseContext {
@@ -37,6 +38,7 @@ public final class WeAreOnlineDefaultContext extends WeAreOnlineBaseContext {
 
     /**
      * Ctor.
+     *
      * @param elm Annotated element
      */
     public WeAreOnlineDefaultContext(final AnnotatedElement elm) {

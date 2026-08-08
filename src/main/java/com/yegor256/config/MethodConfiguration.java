@@ -11,6 +11,7 @@ import org.junit.platform.commons.util.AnnotationUtils;
 
 /**
  * Configuration from method.
+ *
  * @since 0.3.0
  */
 public final class MethodConfiguration implements ConfigurationSource {
@@ -22,6 +23,7 @@ public final class MethodConfiguration implements ConfigurationSource {
 
     /**
      * Ctor.
+     *
      * @param cnt JUnit context
      */
     public MethodConfiguration(final ExtensionContext cnt) {

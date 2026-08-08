@@ -13,6 +13,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link ExpectationsFrom}.
+ *
  * @since 0.3.0
  */
 final class ExpectationsFromTest {

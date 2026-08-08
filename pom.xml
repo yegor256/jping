@@ -167,15 +167,6 @@
             <configuration>
               <excludes combine.children="append">
                 <exclude>duplicatefinder:.*</exclude>
-                <!--
-                ErrorProneValidator forks javac without a source, target,
-                or release flag, so PatternMatchingInstanceof suggests Java
-                16+ syntax that fails to compile under this project's
-                Java 8 source level.
-                @see https://github.com/yegor256/qulice/issues/1716
-                -->
-                <exclude>errorprone:/src/main/java/com/yegor256/config/DefaultOnlineMeans\.java</exclude>
-                <exclude>errorprone:/src/test/java/com/yegor256/WeAreOnlineDefaultContext\.java</exclude>
               </excludes>
             </configuration>
           </plugin>

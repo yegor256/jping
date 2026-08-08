@@ -13,6 +13,7 @@ import java.util.concurrent.Future;
 
 /**
  * Parallel probing.
+ *
  * @since 0.3.0
  */
 public final class ParallelProbing {
@@ -29,15 +30,18 @@ public final class ParallelProbing {
 
     /**
      * Ctor.
+     *
      * @param prb Probe to use
      * @param exps Expectations to check
      */
+    // @checkstyle ConstructorsCodeFreeCheck (1 line)
     public ParallelProbing(final Probe prb, final Expectation... exps) {
         this(prb, new ExpectationsAsList(exps));
     }
 
     /**
      * Ctor.
+     *
      * @param prb Probe to use
      * @param exps Expectations to check
      */
@@ -46,10 +50,6 @@ public final class ParallelProbing {
         this.probe = prb;
     }
 
-    /**
-     * Probe all expectations in parallel.
-     * @return Probing outcome
-     */
     public ProbingOutcome outcome() {
         boolean success = false;
         boolean failed = false;
@@ -62,9 +62,7 @@ public final class ParallelProbing {
             final CompletionService<ProbeResult> completion = execution.completion();
             final Future<?>[] futures = new Future<?>[this.expectations.size()];
             this.submitAll(execution, futures);
-            int pending = this.expectations.size();
-            while (pending > 0) {
-                pending -= 1;
+            for (final Expectation ignored : this.expectations) {
                 final ProbeResult result = new CompletedProbe(completion).result();
                 if (!result.acceptable()) {
                     execution.cancellation(futures).now();

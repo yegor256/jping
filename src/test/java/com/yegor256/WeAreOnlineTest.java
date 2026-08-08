@@ -12,6 +12,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link WeAreOnline}.
+ *
  * @since 0.1.0
  */
 @ExtendWith(WeAreOnline.class)

@@ -6,6 +6,7 @@ package com.yegor256.probe;
 
 /**
  * Reachability.
+ *
  * @since 0.3.0
  */
 public final class Reachability {
@@ -22,6 +23,7 @@ public final class Reachability {
 
     /**
      * Ctor.
+     *
      * @param value Availability flag
      * @param descr State description
      */
@@ -30,18 +32,10 @@ public final class Reachability {
         this.text = descr;
     }
 
-    /**
-     * Availability flag.
-     * @return TRUE if available
-     */
     public boolean available() {
         return this.status;
     }
 
-    /**
-     * State description.
-     * @return Description text
-     */
     public String description() {
         return this.text;
     }
