@@ -15,6 +15,13 @@ import java.util.Arrays;
  */
 public final class DefaultOnlineMeans implements OnlineMeans {
 
+    /**
+     * Ctor.
+     */
+    public DefaultOnlineMeans() {
+        // nothing to initialize
+    }
+
     @Override
     public String url() {
         return "https://www.google.com";

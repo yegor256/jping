@@ -16,13 +16,13 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  *
  * <p>Use in together with {@link ExecutionCondition}:</p>
  *
- * <code><pre> import com.yegor256.WeAreOnline;
+ * <pre><code> import com.yegor256.WeAreOnline;
  * import org.junit.jupiter.api.extension.ExtendWith;
  *
  * &#64;ExtendWith(WeAreOnline.class)
  * final class MyTest {
  *   // Your test methods
- * }</pre></code>
+ * }</code></pre>
  *
  * <p>This will guarantee you that the test methods inside this class
  * will only be executed if a public Internet connection is available.</p>
@@ -30,6 +30,13 @@ import org.junit.jupiter.api.extension.ExtensionContext;
  * @since 0.0.1
  */
 public final class WeAreOnline implements ExecutionCondition {
+
+    /**
+     * Ctor.
+     */
+    public WeAreOnline() {
+        // nothing to initialize
+    }
 
     @Override
     public ConditionEvaluationResult evaluateExecutionCondition(

@@ -10,6 +10,13 @@ package com.yegor256.config;
  */
 public final class DefaultConfiguration implements ConfigurationSource {
 
+    /**
+     * Ctor.
+     */
+    public DefaultConfiguration() {
+        // nothing to initialize
+    }
+
     @Override
     public OnlineConfiguration configuration() {
         return new AnnotationConfiguration(new DefaultOnlineMeans());

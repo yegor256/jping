@@ -13,6 +13,13 @@ import com.yegor256.probe.Probe;
  */
 public final class MissingConfiguration implements OnlineConfiguration {
 
+    /**
+     * Ctor.
+     */
+    public MissingConfiguration() {
+        // nothing to initialize
+    }
+
     @Override
     public OnlineConfiguration fallback(final OnlineConfiguration other) {
         return other;
