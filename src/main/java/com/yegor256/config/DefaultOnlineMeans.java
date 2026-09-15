@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 /**
  * Default annotation.
+ *
  * @since 0.3.0
  */
 public final class DefaultOnlineMeans implements OnlineMeans {

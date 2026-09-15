@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 
 /**
  * Online decision.
+ *
  * @since 0.3.0
  */
 public final class OnlineDecision {
@@ -24,6 +25,7 @@ public final class OnlineDecision {
 
     /**
      * Ctor.
+     *
      * @param mode Enabled flag
      * @param text Decision reason
      */
@@ -34,6 +36,7 @@ public final class OnlineDecision {
 
     /**
      * Invert this decision.
+     *
      * @return Inverted decision
      */
     public OnlineDecision inverted() {
@@ -42,6 +45,7 @@ public final class OnlineDecision {
 
     /**
      * Convert to a JUnit condition evaluation result.
+     *
      * @return Evaluation result
      */
     public ConditionEvaluationResult asJUnit() {

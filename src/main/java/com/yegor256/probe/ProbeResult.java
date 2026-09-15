@@ -8,6 +8,7 @@ import com.yegor256.expectation.Expectation;
 
 /**
  * Probe result.
+ *
  * @since 0.3.0
  */
 public final class ProbeResult {
@@ -29,6 +30,7 @@ public final class ProbeResult {
 
     /**
      * New result.
+     *
      * @param target Checked URL
      * @param state Actual reachability
      */
@@ -38,6 +40,7 @@ public final class ProbeResult {
 
     /**
      * New result.
+     *
      * @param target Checked URL
      * @param state Actual reachability
      * @param exp Bound expectation
@@ -54,6 +57,7 @@ public final class ProbeResult {
 
     /**
      * Bind this result to an expectation.
+     *
      * @param exp Expectation to bind
      * @return New probe result
      */
@@ -63,6 +67,7 @@ public final class ProbeResult {
 
     /**
      * Check whether this result satisfies its bound expectation.
+     *
      * @return TRUE if acceptable
      */
     public boolean acceptable() {
@@ -71,6 +76,7 @@ public final class ProbeResult {
 
     /**
      * Check whether the target was reachable.
+     *
      * @return TRUE if reachable
      */
     public boolean successful() {
@@ -79,6 +85,7 @@ public final class ProbeResult {
 
     /**
      * Explain this result.
+     *
      * @return Explanation text
      */
     public String explanation() {

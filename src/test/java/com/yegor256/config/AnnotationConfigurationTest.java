@@ -17,6 +17,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link AnnotationConfiguration}.
+ *
  * @since 0.3.0
  */
 final class AnnotationConfigurationTest {

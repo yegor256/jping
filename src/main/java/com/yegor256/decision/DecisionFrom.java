@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 
 /**
  * Decision from source.
+ *
  * @since 0.3.0
  */
 public final class DecisionFrom {
@@ -26,6 +27,7 @@ public final class DecisionFrom {
 
     /**
      * Ctor.
+     *
      * @param src Source to read
      * @param prb Probe to use
      */
@@ -36,6 +38,7 @@ public final class DecisionFrom {
 
     /**
      * Make a decision.
+     *
      * @return Evaluation result
      */
     public ConditionEvaluationResult result() {

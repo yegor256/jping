@@ -9,12 +9,14 @@ import com.yegor256.probe.Probe;
 
 /**
  * Online configuration.
+ *
  * @since 0.3.0
  */
 public interface OnlineConfiguration {
 
     /**
      * Use this configuration or another one.
+     *
      * @param other The other configuration
      * @return Chosen configuration
      */
@@ -22,6 +24,7 @@ public interface OnlineConfiguration {
 
     /**
      * Make decision with a probe.
+     *
      * @param probe The probe
      * @return Decision
      */

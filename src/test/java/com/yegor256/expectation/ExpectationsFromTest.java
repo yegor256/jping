@@ -5,6 +5,7 @@
 package com.yegor256.expectation;
 
 import com.yegor256.OnlineMeans;
+import com.yegor256.Request;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link ExpectationsFrom}.
+ *
  * @since 0.3.0
  */
 final class ExpectationsFromTest {
@@ -47,7 +49,7 @@ final class ExpectationsFromTest {
     }
 
     @SuppressWarnings("unused")
-    @OnlineMeans(requests = {@com.yegor256.Request(url = "https://example.com")})
+    @OnlineMeans(requests = {@Request(url = "https://example.com")})
     private void requests() {
         // used in reflection
     }

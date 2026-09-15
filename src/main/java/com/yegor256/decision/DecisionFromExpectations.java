@@ -6,6 +6,7 @@ package com.yegor256.decision;
 
 /**
  * Decision from expectations.
+ *
  * @since 0.3.0
  */
 public final class DecisionFromExpectations {
@@ -17,6 +18,7 @@ public final class DecisionFromExpectations {
 
     /**
      * Ctor.
+     *
      * @param raw Raw outcome
      */
     public DecisionFromExpectations(final ProbingOutcome raw) {
@@ -25,6 +27,7 @@ public final class DecisionFromExpectations {
 
     /**
      * Make a decision.
+     *
      * @return Online decision
      */
     public OnlineDecision decision() {

@@ -5,6 +5,7 @@
 
 /**
  * Test support objects.
+ *
  * @since 0.3.0
  */
 package com.yegor256.support;

@@ -9,10 +9,12 @@ import com.yegor256.support.FakeConfiguration;
 import com.yegor256.support.FakeProbe;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link MissingConfiguration}.
+ *
  * @since 0.3.0
  */
 final class MissingConfigurationTest {
@@ -29,7 +31,7 @@ final class MissingConfigurationTest {
 
     @Test
     void failsWhenChecked() {
-        org.junit.jupiter.api.Assertions.assertThrows(
+        Assertions.assertThrows(
             IllegalStateException.class,
             () -> new MissingConfiguration().checkedBy(new FakeProbe())
         );

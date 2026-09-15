@@ -10,6 +10,7 @@ import com.yegor256.RequestStrategy;
 
 /**
  * Expectations from annotation.
+ *
  * @since 0.3.0
  */
 public final class ExpectationsFrom {
@@ -21,6 +22,7 @@ public final class ExpectationsFrom {
 
     /**
      * Ctor.
+     *
      * @param annt Source annotation
      */
     public ExpectationsFrom(final OnlineMeans annt) {
@@ -29,6 +31,7 @@ public final class ExpectationsFrom {
 
     /**
      * Build expectations from the annotation.
+     *
      * @return Expectations
      */
     public Expectations expectations() {

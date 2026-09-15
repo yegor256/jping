@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Probe threads.
+ *
  * @since 0.3.0
  */
 public final class ProbeThreads {
@@ -20,6 +21,7 @@ public final class ProbeThreads {
 
     /**
      * Ctor.
+     *
      * @param size Number of threads
      */
     public ProbeThreads(final int size) {
@@ -28,6 +30,7 @@ public final class ProbeThreads {
 
     /**
      * Build the executor service.
+     *
      * @return Executor service
      */
     public ExecutorService service() {

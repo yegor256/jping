@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Expectations.
+ *
  * @since 0.3.0
  */
 public final class Expectations {
@@ -23,6 +24,7 @@ public final class Expectations {
 
     /**
      * Ctor.
+     *
      * @param exps Expectations
      */
     public Expectations(final Expectation... exps) {
@@ -31,6 +33,7 @@ public final class Expectations {
 
     /**
      * Ctor.
+     *
      * @param exps Expectations
      */
     public Expectations(final List<Expectation> exps) {
@@ -39,6 +42,7 @@ public final class Expectations {
 
     /**
      * Check all expectations with a probe.
+     *
      * @param probe Probe to use
      * @return Online decision
      */

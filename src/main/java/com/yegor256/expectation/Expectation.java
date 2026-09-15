@@ -11,6 +11,7 @@ import com.yegor256.probe.Reachability;
 
 /**
  * One expectation.
+ *
  * @since 0.3.0
  */
 public final class Expectation {
@@ -27,6 +28,7 @@ public final class Expectation {
 
     /**
      * Ctor.
+     *
      * @param url Target URL
      * @param mode Target strategy
      */
@@ -37,6 +39,7 @@ public final class Expectation {
 
     /**
      * Check this expectation with a probe.
+     *
      * @param probe Probe to use
      * @return Probe result
      */
@@ -46,6 +49,7 @@ public final class Expectation {
 
     /**
      * Check whether the reachability satisfies this expectation.
+     *
      * @param reachability Reachability to check
      * @return TRUE if satisfied
      */
@@ -61,6 +65,7 @@ public final class Expectation {
 
     /**
      * Explain the mismatch against the given reachability.
+     *
      * @param reachability Reachability that failed to satisfy this expectation
      * @return Explanation text
      */
@@ -75,6 +80,7 @@ public final class Expectation {
 
     /**
      * Target URL.
+     *
      * @return Target URL
      */
     public String url() {

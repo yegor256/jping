@@ -13,6 +13,7 @@ import java.util.concurrent.Future;
 
 /**
  * Parallel probing.
+ *
  * @since 0.3.0
  */
 public final class ParallelProbing {
@@ -29,6 +30,7 @@ public final class ParallelProbing {
 
     /**
      * Ctor.
+     *
      * @param prb Probe to use
      * @param exps Expectations to check
      */
@@ -38,6 +40,7 @@ public final class ParallelProbing {
 
     /**
      * Ctor.
+     *
      * @param prb Probe to use
      * @param exps Expectations to check
      */
@@ -48,6 +51,7 @@ public final class ParallelProbing {
 
     /**
      * Probe all expectations in parallel.
+     *
      * @return Probing outcome
      */
     public ProbingOutcome outcome() {

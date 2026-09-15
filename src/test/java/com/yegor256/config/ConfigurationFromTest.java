@@ -13,6 +13,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Test case for {@link ConfigurationFrom}.
+ *
  * @since 0.3.0
  */
 @OnlineMeans(url = "https://class.example.com")

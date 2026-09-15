@@ -10,6 +10,7 @@ import java.util.concurrent.Future;
 
 /**
  * Task cancellation.
+ *
  * @since 0.3.0
  */
 public final class Cancellation {
@@ -26,6 +27,7 @@ public final class Cancellation {
 
     /**
      * Ctor.
+     *
      * @param executor Service to stop
      * @param items Futures to cancel
      */
@@ -35,6 +37,7 @@ public final class Cancellation {
 
     /**
      * Ctor.
+     *
      * @param executor Service to stop
      * @param items Futures to cancel
      */

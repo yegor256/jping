@@ -11,6 +11,7 @@ import java.net.URLConnection;
 
 /**
  * HTTP probe.
+ *
  * @since 0.3.0
  */
 public final class HttpProbe implements Probe {
@@ -29,6 +30,7 @@ public final class HttpProbe implements Probe {
 
     /**
      * Ctor.
+     *
      * @param limits Probe timeouts
      */
     public HttpProbe(final ProbeTimeouts limits) {

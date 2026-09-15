@@ -9,6 +9,7 @@ import com.yegor256.config.OnlineConfiguration;
 
 /**
  * Fake configuration source.
+ *
  * @since 0.3.0
  */
 public final class FakeConfigurationSource implements ConfigurationSource {
@@ -20,6 +21,7 @@ public final class FakeConfigurationSource implements ConfigurationSource {
 
     /**
      * Ctor.
+     *
      * @param cfg Configuration
      */
     public FakeConfigurationSource(final OnlineConfiguration cfg) {

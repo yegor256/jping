@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Completed probe.
+ *
  * @since 0.3.0
  */
 public final class CompletedProbe {
@@ -20,6 +21,7 @@ public final class CompletedProbe {
 
     /**
      * Ctor.
+     *
      * @param cpl Completion service
      */
     public CompletedProbe(final CompletionService<ProbeResult> cpl) {
@@ -28,6 +30,7 @@ public final class CompletedProbe {
 
     /**
      * Take the next completed result.
+     *
      * @return Probe result
      */
     public ProbeResult result() {
