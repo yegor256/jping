@@ -31,6 +31,14 @@ final class HttpProbeTest {
     }
 
     @Test
+    void reportsUrlWithoutSchemeAsUnreachable() {
+        MatcherAssert.assertThat(
+            new HttpProbe().probe("www.google.com").successful(),
+            Matchers.is(false)
+        );
+    }
+
+    @Test
     void returnsNewProbeWithTimeouts() {
         MatcherAssert.assertThat(
             new HttpProbe().withTimeouts(new ProbeTimeouts(1, 2)),
