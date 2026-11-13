@@ -53,6 +53,23 @@ final class ParallelProbingTest {
     }
 
     @Test
+    void succeedsWhenOnlyOptionalRequestFails() {
+        MatcherAssert.assertThat(
+            new ParallelProbing(
+                new FakeProbe().with(
+                    ParallelProbingTest.ONE,
+                    new ProbeResult(
+                        ParallelProbingTest.ONE,
+                        new Reachability(false, "unreachable")
+                    )
+                ),
+                new Expectation(ParallelProbingTest.ONE, RequestStrategy.OPTIONAL)
+            ).outcome().decision().asJUnit().isDisabled(),
+            Matchers.is(false)
+        );
+    }
+
+    @Test
     void failsWhenMandatoryRequestFails() {
         MatcherAssert.assertThat(
             new ParallelProbing(
