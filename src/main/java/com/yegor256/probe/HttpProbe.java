@@ -47,7 +47,7 @@ public final class HttpProbe implements Probe {
             connection.connect();
             connection.getInputStream().close();
             result = new ProbeResult(url, new Reachability(true, "reachable"));
-        } catch (final IOException | URISyntaxException err) {
+        } catch (final IOException | URISyntaxException | IllegalArgumentException err) {
             final String text;
             if (err.getMessage() == null || err.getMessage().isEmpty()) {
                 text = err.getClass().getSimpleName();
