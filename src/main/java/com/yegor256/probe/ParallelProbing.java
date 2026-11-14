@@ -76,9 +76,7 @@ public final class ParallelProbing {
                     outcome = new ProbingOutcome(false, result.explanation());
                     break;
                 }
-                if (result.successful()) {
-                    success = true;
-                }
+                success = true;
             }
             if (success && !failed) {
                 outcome = new ProbingOutcome(true, "Connectivity expectations satisfied");
