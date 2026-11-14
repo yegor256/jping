@@ -65,10 +65,10 @@ public final class DefaultOnlineMeans implements OnlineMeans {
 
     @Override
     public int hashCode() {
-        return this.url().hashCode()
-            + this.connectTimeout()
-            + this.readTimeout()
-            + Boolean.hashCode(this.offline())
-            + Arrays.hashCode(this.requests());
+        return ((127 * "url".hashCode()) ^ this.url().hashCode())
+            + ((127 * "connectTimeout".hashCode()) ^ Integer.hashCode(this.connectTimeout()))
+            + ((127 * "readTimeout".hashCode()) ^ Integer.hashCode(this.readTimeout()))
+            + ((127 * "offline".hashCode()) ^ Boolean.hashCode(this.offline()))
+            + ((127 * "requests".hashCode()) ^ Arrays.hashCode(this.requests()));
     }
 }
