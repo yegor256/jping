@@ -5,6 +5,8 @@
 package com.yegor256.config;
 
 import com.yegor256.OnlineMeans;
+import java.util.Collections;
+import java.util.HashSet;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,7 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.3.0
  */
+@OnlineMeans
 final class DefaultOnlineMeansTest {
 
     @Test
@@ -61,6 +64,51 @@ final class DefaultOnlineMeansTest {
         MatcherAssert.assertThat(
             new DefaultOnlineMeans().annotationType(),
             Matchers.equalTo(OnlineMeans.class)
+        );
+    }
+
+    @Test
+    void equalsRuntimeAnnotation() {
+        MatcherAssert.assertThat(
+            new DefaultOnlineMeans(),
+            Matchers.equalTo(DefaultOnlineMeansTest.class.getAnnotation(OnlineMeans.class))
+        );
+    }
+
+    @Test
+    void runtimeAnnotationEqualsDefault() {
+        MatcherAssert.assertThat(
+            DefaultOnlineMeansTest.class.getAnnotation(OnlineMeans.class),
+            Matchers.equalTo(new DefaultOnlineMeans())
+        );
+    }
+
+    @Test
+    void matchesRuntimeAnnotationHashCode() {
+        MatcherAssert.assertThat(
+            new DefaultOnlineMeans().hashCode(),
+            Matchers.equalTo(
+                DefaultOnlineMeansTest.class.getAnnotation(OnlineMeans.class).hashCode()
+            )
+        );
+    }
+
+    @Test
+    void findsRuntimeAnnotationInDefaultSet() {
+        MatcherAssert.assertThat(
+            new HashSet<OnlineMeans>(Collections.singleton(new DefaultOnlineMeans()))
+                .contains(DefaultOnlineMeansTest.class.getAnnotation(OnlineMeans.class)),
+            Matchers.is(true)
+        );
+    }
+
+    @Test
+    void findsDefaultInRuntimeAnnotationSet() {
+        MatcherAssert.assertThat(
+            new HashSet<>(
+                Collections.singleton(DefaultOnlineMeansTest.class.getAnnotation(OnlineMeans.class))
+            ).contains(new DefaultOnlineMeans()),
+            Matchers.is(true)
         );
     }
 }
